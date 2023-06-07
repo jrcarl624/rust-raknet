@@ -43,7 +43,7 @@ impl RaknetListener {
         let s = match UdpSocket::bind(sockaddr).await {
             Ok(p) => p,
             Err(_) => {
-                return Err(RaknetError::BindAdressError);
+                return Err(RaknetError::BindAddressError);
             }
         };
 
@@ -589,9 +589,9 @@ impl RaknetListener {
     /// let mut socket = RaknetListener::bind("127.0.0.1:19132".parse().unwrap()).await.unwrap();
     /// socket.set_full_motd("motd").await;
     /// ```
-    pub fn set_full_motd(&mut self, motd: String) -> Result<()> {
-        self.motd = motd;
-        Ok(())
+    pub fn set_full_motd(&mut self, motd: String)  {
+        self.motd = motd
+
     }
 
     pub async fn get_peer_raknet_version(&self, peer: &SocketAddr) -> Result<u8> {

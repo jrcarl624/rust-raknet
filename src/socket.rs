@@ -199,7 +199,7 @@ impl RaknetSocket {
 
         let s = match UdpSocket::bind("0.0.0.0:0").await {
             Ok(p) => p,
-            Err(_) => return Err(RaknetError::BindAdressError),
+            Err(_) => return Err(RaknetError::BindAddressError),
         };
 
         let packet = OpenConnectionRequest1 {
@@ -658,7 +658,7 @@ impl RaknetSocket {
 
                 //monitor log
                 if cur_timestamp_millis() - last_monitor_tick > 10000 {
-                    raknet_log_debug!("peer addr : {} , sendq size : {} , sentq size : {} , rto : {} , recvq size : {} ,  recvq fragment size : {} , ordered queue size : {} - {:?}" , 
+                    raknet_log_debug!("peer addr : {} , sendq size : {} , sentq size : {} , rto : {} , recvq size : {} ,  recvq fragment size : {} , ordered queue size : {} - {:?}" ,
                         peer_addr,
                         sendq.get_reliable_queue_size(),
                         sendq.get_sent_queue_size(),
@@ -741,7 +741,7 @@ impl RaknetSocket {
     pub async fn ping(addr: &SocketAddr) -> Result<(i64, String)> {
         let s = match UdpSocket::bind("0.0.0.0:0").await {
             Ok(p) => p,
-            Err(_) => return Err(RaknetError::BindAdressError),
+            Err(_) => return Err(RaknetError::BindAddressError),
         };
 
         loop {
